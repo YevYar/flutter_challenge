@@ -7,30 +7,23 @@ class Movie extends MovieDetailing {
   final String title;
   final String poster; // can be empty
 
-  Movie(this.id, this.title, {
+  const Movie(this.id, this.title, {
     this.poster = "",
-    String genre,
-    String director,
-    String fullPlot,
-    String cast,
-    List<Rating> ratings
+    String genre = "",
+    String director = "",
+    String fullPlot = "",
+    String cast = "",
+    List<Rating> ratings = const []
   }) : super(genre: genre, director: director, fullPlot: fullPlot, cast: cast);
 
-  Movie copyWith({
-    String poster,
-    String genre,
-    String director,
-    String fullPlot,
-    String cast,
-    List<Rating> ratings
-  }) {
+  Movie copyWith(MovieDetailing detailedMovie) {
     return Movie(this.id, this.title,
-        poster: poster ?? this.poster,
-        genre: genre ?? this.genre,
-        director: director ?? this.director,
-        fullPlot: fullPlot ?? this.fullPlot,
-        cast: cast ?? this.cast,
-        ratings: ratings ?? this.ratings);
+        poster: this.poster,
+        genre: detailedMovie.genre ?? this.genre,
+        director: detailedMovie.director ?? this.director,
+        fullPlot: detailedMovie.fullPlot ?? this.fullPlot,
+        cast: detailedMovie.cast ?? this.cast,
+        ratings: detailedMovie.ratings ?? this.ratings);
   }
 
   @override
@@ -73,12 +66,12 @@ class MovieDetailing {
   final String cast;
   final List<Rating> ratings;
 
-  MovieDetailing({
-    this.genre = "",
-    this.director = "",
-    this.fullPlot = "",
-    this.cast = "",
-    this.ratings = const []
+  const MovieDetailing({
+    this.genre,
+    this.director,
+    this.fullPlot,
+    this.cast,
+    this.ratings
   });
 }
 
@@ -87,7 +80,7 @@ class Rating {
   final String source;
   final String value;
 
-  Rating(this.source, this.value);
+  const Rating(this.source, this.value);
 
   @override
   int get hashCode => source.hashCode ^ value.hashCode;
