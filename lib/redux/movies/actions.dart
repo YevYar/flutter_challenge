@@ -3,7 +3,7 @@ import 'models/models.dart';
 class FindMoviesAction {
   final String title;
 
-  FindMoviesAction(this.title);
+  const FindMoviesAction(this.title);
 
   @override
   String toString() {
@@ -15,7 +15,7 @@ class SearchSuccessAction {
   final List<Movie> movies;
   final bool isThatsAll;
 
-  SearchSuccessAction(this.movies, this.isThatsAll);
+  const SearchSuccessAction(this.movies, this.isThatsAll);
 
   @override
   String toString() {
@@ -26,7 +26,7 @@ class SearchSuccessAction {
 class SearchFailedAction {
   final String errorMessage;
 
-  SearchFailedAction(this.errorMessage);
+  const SearchFailedAction(this.errorMessage);
 
   @override
   String toString() {
@@ -40,7 +40,7 @@ class FetchMoreSuccessAction {
   final List<Movie> movies;
   final bool isThatsAll;
 
-  FetchMoreSuccessAction(this.movies, this.isThatsAll);
+  const FetchMoreSuccessAction(this.movies, this.isThatsAll);
 
   @override
   String toString() {
@@ -51,7 +51,7 @@ class FetchMoreSuccessAction {
 class FetchMoreFailedAction {
   final String errorMessage;
 
-  FetchMoreFailedAction(this.errorMessage);
+  const FetchMoreFailedAction(this.errorMessage);
 
   @override
   String toString() {
@@ -62,7 +62,7 @@ class FetchMoreFailedAction {
 class FetchMovieAction {
   final String id;
 
-  FetchMovieAction(this.id);
+  const FetchMovieAction(this.id);
 
   @override
   String toString() {
@@ -74,7 +74,7 @@ class FetchMovieSuccessAction {
   final String id;
   final MovieDetailing detailedInfo;
   
-  FetchMovieSuccessAction(this.id, this.detailedInfo);
+  const FetchMovieSuccessAction(this.id, this.detailedInfo);
   
   @override
   String toString() {

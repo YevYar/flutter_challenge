@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
-import 'package:flutter_challenge/redux/movies/models/movie.dart';
 import 'package:meta/meta.dart';
+
+import 'movie.dart';
 
 @immutable
 class MovieState {
@@ -13,7 +14,7 @@ class MovieState {
   final int nextSearchPage; // next page, which will be updated only on FETCH_MORE_SUCCESS or will be set to 2 on new search
   final String searchErrorMessage; // For example, "Too many results." / "Movie not found!"
 
-  MovieState({
+  const MovieState({
     this.currentSearchTitle = "",
     this.foundMovies = const [],
     this.isFetchingMore = false,
