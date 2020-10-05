@@ -73,6 +73,17 @@ class MovieDetailing {
     this.cast,
     this.ratings
   });
+
+  @override
+  String toString() {
+    return '''MovieDetailing{
+        genre: $genre,
+        director: $director,
+        fullPlot: $fullPlot,
+        cast: $cast,
+        ratings: $ratings
+      }''';
+  }
 }
 
 @immutable

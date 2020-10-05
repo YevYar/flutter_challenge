@@ -1,7 +1,12 @@
 class SuccessResponse {
   final Map<String, dynamic> data;
 
-  SuccessResponse(this.data);
+  const SuccessResponse(this.data);
+
+  @override
+  String toString() {
+    return 'SuccessResponse{data: $data}';
+  }
 }
 
 class FailedResponse implements Exception {
@@ -9,5 +14,14 @@ class FailedResponse implements Exception {
   final bool isResponseNull;
   final int statusCode;
 
-  FailedResponse(this.errorMessage, {this.statusCode, this.isResponseNull = false});
+  const FailedResponse(this.errorMessage, {this.statusCode, this.isResponseNull = false});
+
+  @override
+  String toString() {
+    return '''FailedResponse{
+        errorMessage: $errorMessage,
+        isResponseNull: $isResponseNull,
+        statusCode: $statusCode,
+      }''';
+  }
 }

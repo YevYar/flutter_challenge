@@ -55,7 +55,7 @@ class Api {
   ///
   /// Can return FailedResponse
   Future<dynamic> fetchMovie(String id) async {
-    Response response = await _httpService.get('${ApiUrl["fetchMovie"]}$id', params: params);
+    Response response = await _httpService.get('${ApiUrl["fetchMovie"]}$id&plot=full', params: params);
     return fetchMovieUtil(response);
   }
 
