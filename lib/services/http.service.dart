@@ -5,24 +5,27 @@ class HTTPService {
   static BaseOptions _options = BaseOptions(
       connectTimeout: 6000,
       receiveTimeout: 3000,
-      headers: {"Content-Type": "application/json; charset=utf-8"}
-    );
+      headers: {"Content-Type": "application/json; charset=utf-8"});
 
   final Dio _instance;
 
-  HTTPService({String baseUrl = rootUrl})
-      : _instance = new Dio(HTTPService._options.merge(baseUrl: baseUrl));
+  HTTPService({String baseUrl = rootUrl, InterceptorsWrapper interceptor})
+      : _instance = new Dio(HTTPService._options.merge(baseUrl: baseUrl)) {
+    if (interceptor != null) {
+      _instance.interceptors.add(interceptor);
+    }
+  }
 
   /// Send a GET-request
   ///
   /// Sends a GET-request on provided [url] with [params].
-  get(String url, {Map<String, dynamic> params = const {}}) =>
+  Future<Response> get(String url, {Map<String, dynamic> params = const {}}) =>
       _instance.get(url, queryParameters: params);
 
   /// Send a POST-request
   ///
   /// Sends a POST-request on provided [url] with raw [data], which will be converted to FormData.
-  post(String url, {Map<String, dynamic> data = const {}}) {
+  Future<Response> post(String url, {Map<String, dynamic> data = const {}}) {
     FormData formData = new FormData.fromMap(data);
     return _instance.post(url, data: formData);
   }
@@ -30,7 +33,7 @@ class HTTPService {
   /// Send a PATCH-request
   ///
   /// Sends a PATCH-request on provided [url] with raw [data], which will be converted to FormData, and [headers].
-  patch(
+  Future<Response> patch(
     String url, {
     Map<String, dynamic> data = const {},
     Map<String, dynamic> headers = const {},
@@ -43,7 +46,7 @@ class HTTPService {
   /// Send a PUT-request
   ///
   /// Sends a PUT-request on provided [url] with raw [data], which will be converted to FormData.
-  put(String url, {Map<String, dynamic> data = const {}}) {
+  Future<Response> put(String url, {Map<String, dynamic> data = const {}}) {
     FormData formData = new FormData.fromMap(data);
     return _instance.put(url, data: formData);
   }
@@ -51,6 +54,6 @@ class HTTPService {
   /// Send a DELETE-request
   ///
   /// Sends a DELETE-request on provided [url] with [params].
-  delete(String url, {Map<String, dynamic> params = const {}}) =>
+  Future<Response> delete(String url, {Map<String, dynamic> params = const {}}) =>
       _instance.delete(url, queryParameters: params);
 }
