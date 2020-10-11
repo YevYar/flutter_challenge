@@ -25,3 +25,5 @@ class FailedResponse implements Exception {
       }''';
   }
 }
+
+abstract class IOkResponse {}

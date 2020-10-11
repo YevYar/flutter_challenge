@@ -1,4 +1,6 @@
-class SearchOkResponse {
+import 'responses.dart';
+
+class SearchOkResponse implements IOkResponse {
   final List<Map<String, String>> data;
   final int totalResults;
 
