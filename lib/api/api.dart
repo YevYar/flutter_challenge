@@ -47,7 +47,7 @@ class Api {
   ///
   /// Can return SearchOkResponse or FailedResponse
   Future<dynamic> fetchMoreMovie(String title, int page) async {
-    Response response = await _httpService.get('${ApiUrl["fetchMore"]}$title&page=$page', params: params);
+    final response = await _httpService.get('${ApiUrl["fetchMore"]}$title&page=$page', params: params);
     return searchUtil(response);
   }
 
@@ -55,7 +55,7 @@ class Api {
   ///
   /// Can return MovieOkResponse or FailedResponse
   Future<dynamic> fetchMovie(String id) async {
-    Response response = await _httpService.get('${ApiUrl["fetchMovie"]}$id&plot=full', params: params);
+    final response = await _httpService.get('${ApiUrl["fetchMovie"]}$id&plot=full', params: params);
     return fetchMovieUtil(response);
   }
 
@@ -63,7 +63,7 @@ class Api {
   ///
   /// Can return SearchOkResponse or FailedResponse
   Future<dynamic> getSearchResult(String title) async {
-    Response response = await _httpService.get('${ApiUrl["search"]}$title', params: params);
+    final response = await _httpService.get('${ApiUrl["search"]}$title', params: params);
     return searchUtil(response);
   }
 }

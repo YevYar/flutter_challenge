@@ -23,7 +23,7 @@ fetchMovieUtil(Response response) {
 
     Map<String, dynamic> data = response.data.data;
 
-    var details = MovieDetailing(
+    final details = MovieDetailing(
         genre: data["Genre"],
         director: data["Director"],
         fullPlot: data["Plot"],

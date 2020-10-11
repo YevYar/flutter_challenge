@@ -2,6 +2,7 @@ import 'package:flutter_challenge/redux/movies/models/models.dart';
 
 import 'responses.dart';
 
+/// Handled fetching movie SuccessResponse 
 class MovieOkResponse implements IOkResponse {
   final MovieDetailing details;
   

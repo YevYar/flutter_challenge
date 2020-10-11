@@ -26,7 +26,7 @@ class HTTPService {
   ///
   /// Sends a POST-request on provided [url] with raw [data], which will be converted to FormData.
   Future<Response> post(String url, {Map<String, dynamic> data = const {}}) {
-    FormData formData = new FormData.fromMap(data);
+    final formData = new FormData.fromMap(data);
     return _instance.post(url, data: formData);
   }
 
@@ -38,8 +38,8 @@ class HTTPService {
     Map<String, dynamic> data = const {},
     Map<String, dynamic> headers = const {},
   }) {
-    FormData formData = new FormData.fromMap(data);
-    Options options = new Options(headers: headers);
+    final formData = new FormData.fromMap(data);
+    final options = new Options(headers: headers);
     return _instance.patch(url, data: formData, options: options);
   }
 
@@ -47,7 +47,7 @@ class HTTPService {
   ///
   /// Sends a PUT-request on provided [url] with raw [data], which will be converted to FormData.
   Future<Response> put(String url, {Map<String, dynamic> data = const {}}) {
-    FormData formData = new FormData.fromMap(data);
+    final formData = new FormData.fromMap(data);
     return _instance.put(url, data: formData);
   }
 

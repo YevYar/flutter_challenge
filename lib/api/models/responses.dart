@@ -1,3 +1,4 @@
+/// Represents ok response data 
 class SuccessResponse {
   final Map<String, dynamic> data;
 
@@ -9,6 +10,11 @@ class SuccessResponse {
   }
 }
 
+/// Represents failed response
+/// 
+/// If [statusCode] is presented, [isResponseNull] is false.
+/// [isResponseNull] indicates that some error occured in module (for example, host is unavailable).
+/// In such situation [statusCode] will be null.
 class FailedResponse implements Exception {
   final String errorMessage;
   final bool isResponseNull;
@@ -26,4 +32,5 @@ class FailedResponse implements Exception {
   }
 }
 
+/// Interface of handled ok response
 abstract class IOkResponse {}
